@@ -1,0 +1,22 @@
+
+--打车需求高发期
+select month(tpep_pickup_datetime),hour(tpep_pickup_datetime),count(1) from taxi_2019_2020  
+group by month(tpep_pickup_datetime),hour(tpep_pickup_datetime);
+
+
+--什么时候最拥堵
+select hour(tpep_pickup_datetime),count(1) from taxi_2019_2020 
+group by hour(tpep_pickup_datetime);
+
+
+
+
+--夜生活活跃情况
+select hour(tpep_pickup_datetime),sum(passenger_count) 
+from taxi_2019_2020 group by hour(tpep_pickup_datetime);
+
+
+
+-- 什么时候最容易接到长单
+select hour(tpep_pickup_datetime),floor(trip_distance),count(1) from taxi_2019_2020 
+group by hour(tpep_pickup_datetime),floor(trip_distance);
